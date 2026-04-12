@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NestPaw — Premium Home & Pet Essentials</title>
+<meta name="description" content="Curated premium products for your home and beloved pets. Fast US shipping, 30-day returns, 4,800+ happy customers.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏡</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ivory:#FAF8F3;--warm:#F2EDE4;--blush:#EAD9C8;--clay:#C4956A;--clay-d:#9E7248;
+  --forest:#243D33;--forest-m:#2E5244;--forest-l:#3A6B57;
+  --gold:#C9A96E;--gold-l:#DFC08A;--charcoal:#1A1A1A;--ink:#2C2C2C;--muted:#7A736B;
+  --border:rgba(196,149,106,.2);--white:#FFFFFF;--r:10px;--rl:16px;--rxl:24px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--ivory);color:var(--ink);overflow-x:hidden}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--warm)}::-webkit-scrollbar-thumb{background:var(--clay);border-radius:3px}
+.announce{background:var(--forest);color:var(--gold-l);text-align:center;padding:9px 16px;font-size:12px;letter-spacing:.07em;font-weight:500}
+.announce span{opacity:.5;margin:0 14px}
+nav{position:sticky;top:0;z-index:100;background:rgba(250,248,243,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);height:70px;padding:0 5vw;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;color:var(--forest);text-decoration:none;display:flex;align-items:center;gap:8px}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-size:13.5px;color:var(--muted);text-decoration:none;transition:color .2s;position:relative;padding-bottom:2px}
+.nav-links a::after{content:'';position:absolute;bottom:-1px;left:0;width:0;height:1px;background:var(--clay);transition:width .25s}
+.nav-links a:hover{color:var(--ink)}.nav-links a:hover::after{width:100%}
+.nav-right{display:flex;align-items:center;gap:14px}
+.cart-btn{background:var(--forest);color:var(--white);border:none;border-radius:var(--r);padding:9px 20px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Outfit',sans-serif;display:flex;align-items:center;gap:7px;transition:all .2s}
+.cart-btn:hover{background:var(--forest-l);transform:translateY(-1px);box-shadow:0 6px 20px rgba(36,61,51,.25)}
+.cart-badge{background:var(--gold);color:var(--charcoal);border-radius:50%;width:18px;height:18px;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.cart-badge.bump{animation:bump .3s ease}
+@keyframes bump{0%,100%{transform:scale(1)}50%{transform:scale(1.5)}}
+.hero{min-height:90vh;display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
+.hero-l{padding:100px 60px 80px 5vw;display:flex;flex-direction:column;justify-content:center}
+.eyebrow{display:inline-flex;align-items:center;gap:6px;background:var(--blush);color:var(--clay-d);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:5px 14px;border-radius:30px;margin-bottom:28px;width:fit-content}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(48px,5.5vw,78px);line-height:1.05;font-weight:700;color:var(--charcoal);margin-bottom:22px;letter-spacing:-.02em}
+.hero h1 em{color:var(--forest);font-style:italic}
+.hero-desc{font-size:17px;line-height:1.75;color:var(--muted);max-width:430px;margin-bottom:40px;font-weight:300}
+.hero-ctas{display:flex;gap:12px;margin-bottom:56px}
+.btn-p{background:var(--forest);color:var(--white);border:none;border-radius:var(--r);padding:15px 30px;font-size:15px;font-weight:500;cursor:pointer;font-family:'Outfit',sans-serif;transition:all .2s}
+.btn-p:hover{background:var(--forest-l);transform:translateY(-2px);box-shadow:0 10px 28px rgba(36,61,51,.28)}
+.btn-g{background:transparent;color:var(--ink);border:1.5px solid rgba(26,26,26,.2);border-radius:var(--r);padding:15px 30px;font-size:15px;cursor:pointer;font-family:'Outfit',sans-serif;transition:all .2s}
+.btn-g:hover{border-color:var(--clay);color:var(--clay-d)}
+.hero-stats{display:flex;gap:36px}
+.stat-n{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:700;color:var(--forest)}
+.stat-l{font-size:12px;color:var(--muted);margin-top:2px;font-weight:300}
+.hero-r{background:var(--forest);display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:50px 40px;align-content:center}
+.m-card{border-radius:var(--rl);position:relative;overflow:hidden;cursor:pointer;transition:transform .3s}
+.m-card:hover{transform:scale(1.03)}
+.m-card:nth-child(1){margin-top:50px}.m-card:nth-child(4){margin-top:-50px}
+.m-card svg{width:100%;display:block}
+.m-label{position:absolute;bottom:0;left:0;right:0;padding:10px 14px;background:rgba(0,0,0,.4);backdrop-filter:blur(6px);color:rgba(255,255,255,.9);font-size:12px;font-weight:500;letter-spacing:.04em}
+@keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+.hero-l>*{animation:fadeUp .65s ease both}
+.hero-l>*:nth-child(2){animation-delay:.1s}.hero-l>*:nth-child(3){animation-delay:.2s}
+.hero-l>*:nth-child(4){animation-delay:.3s}.hero-l>*:nth-child(5){animation-delay:.42s}
+.ticker{background:var(--warm);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:13px 0;overflow:hidden}
+.ticker-track{display:flex;animation:tick 28s linear infinite;white-space:nowrap}
+.t-item{display:inline-flex;align-items:center;gap:8px;padding:0 36px;font-size:13px;color:var(--muted)}
+.t-dot{width:4px;height:4px;border-radius:50%;background:var(--clay);display:inline-block}
+@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.sec{padding:90px 5vw}
+.sec-head{text-align:center;margin-bottom:48px}
+.sec-badge{display:inline-block;background:var(--blush);color:var(--clay-d);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:14px}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4vw,48px);font-weight:700;color:var(--charcoal);line-height:1.15;letter-spacing:-.02em}
+.sec-title em{color:var(--forest);font-style:italic}
+.sec-sub{font-size:16px;color:var(--muted);margin-top:10px;font-weight:300}
+.cats-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:40px}
+.cat-c{border-radius:var(--rl);padding:26px 18px;text-align:center;cursor:pointer;transition:all .25s;border:1.5px solid transparent;background:var(--white)}
+.cat-c:hover,.cat-c.on{border-color:var(--forest);transform:translateY(-3px);box-shadow:0 12px 32px rgba(36,61,51,.1)}
+.cat-c.on{background:var(--forest);color:var(--white)}
+.cat-icon-wrap{font-size:32px;margin-bottom:8px;display:block}
+.cat-name{font-size:14px;font-weight:500}
+.cat-c:not(.on) .cat-name{color:var(--ink)}
+.cat-cnt{font-size:11px;color:var(--muted)}.cat-c.on .cat-cnt{color:rgba(255,255,255,.6)}
+.prods-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:22px}
+.prod{background:var(--white);border-radius:var(--rl);overflow:hidden;cursor:pointer;transition:transform .25s,box-shadow .25s;border:1px solid var(--border)}
+.prod:hover{transform:translateY(-5px);box-shadow:0 20px 48px rgba(36,61,51,.1)}
+.prod-img{position:relative;overflow:hidden}
+.prod-img svg{width:100%;display:block;transition:transform .35s}
+.prod:hover .prod-img svg{transform:scale(1.04)}
+.prod-bge{position:absolute;top:12px;left:12px;font-size:10px;font-weight:700;padding:4px 9px;border-radius:5px;letter-spacing:.06em;text-transform:uppercase}
+.b-new{background:var(--forest);color:var(--white)}.b-hot{background:#D4503A;color:var(--white)}
+.b-sale{background:var(--gold);color:var(--charcoal)}.b-best{background:var(--charcoal);color:var(--white)}
+.prod-body{padding:18px}
+.prod-cat{font-size:10px;color:var(--clay);font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
+.prod-stars{color:var(--gold);font-size:12px;letter-spacing:1px}
+.prod-revs{font-size:11px;color:var(--muted);margin-bottom:2px}
+.prod-name{font-size:16px;font-weight:500;color:var(--charcoal);margin-bottom:5px;line-height:1.3}
+.prod-desc{font-size:12.5px;color:var(--muted);line-height:1.55;margin-bottom:14px;font-weight:300}
+.prod-foot{display:flex;align-items:center;justify-content:space-between}
+.prod-price{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;color:var(--forest)}
+.prod-orig{font-size:13px;color:var(--muted);text-decoration:line-through;margin-right:5px}
+.prod-save{font-size:10px;color:#3A9A6A;font-weight:600;background:rgba(58,154,106,.1);padding:2px 6px;border-radius:4px}
+.add-btn{background:var(--forest);color:var(--white);border:none;border-radius:var(--r);width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:20px;transition:all .2s;flex-shrink:0}
+.add-btn:hover{background:var(--clay-d);transform:scale(1.1)}
+.add-btn.in{background:var(--gold);color:var(--charcoal);animation:pop .3s ease}
+@keyframes pop{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+.banner{margin:0 5vw 90px;background:var(--forest);border-radius:var(--rxl);overflow:hidden;display:grid;grid-template-columns:1fr auto;align-items:center;position:relative}
+.ban-l{padding:70px 60px;position:relative;z-index:2}
+.ban-tag{display:inline-block;background:rgba(201,169,110,.18);color:var(--gold-l);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:18px}
+.ban-l h2{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.5vw,44px);font-weight:700;color:var(--white);line-height:1.15;margin-bottom:14px;letter-spacing:-.02em}
+.ban-l p{color:rgba(255,255,255,.6);font-size:15px;line-height:1.75;max-width:380px;margin-bottom:28px;font-weight:300}
+.btn-iv{background:var(--ivory);color:var(--forest);border:none;border-radius:var(--r);padding:13px 26px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Outfit',sans-serif;transition:all .2s}
+.btn-iv:hover{background:var(--white);transform:translateY(-1px)}
+.ban-r{padding:40px 60px 40px 0;display:flex;align-items:center;justify-content:center}
+.ban-r svg{width:200px;height:200px;animation:float 4s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.ban-deco{position:absolute;inset:0;background:radial-gradient(circle at 80% 50%,rgba(201,169,110,.07) 0%,transparent 65%)}
+.feats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.feat{background:var(--white);border-radius:var(--rl);padding:32px 26px;border:1px solid var(--border);text-align:center;transition:transform .2s}
+.feat:hover{transform:translateY(-4px)}
+.feat svg{width:48px;height:48px;margin:0 auto 16px;display:block}
+.feat-title{font-size:15px;font-weight:600;color:var(--charcoal);margin-bottom:7px}
+.feat-desc{font-size:13px;color:var(--muted);line-height:1.65;font-weight:300}
+.revs-section{background:var(--warm);padding:90px 5vw}
+.revs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.rev{background:var(--white);border-radius:var(--rl);padding:30px;border:1px solid var(--border);position:relative}
+.rev::before{content:'"';font-family:'Cormorant Garamond',serif;font-size:80px;color:var(--blush);position:absolute;top:10px;right:20px;line-height:1}
+.rev-stars{color:var(--gold);font-size:15px;margin-bottom:14px;letter-spacing:2px}
+.rev-text{font-size:14.5px;line-height:1.8;color:var(--ink);margin-bottom:20px;font-weight:300;font-style:italic;position:relative;z-index:1}
+.rev-author{display:flex;align-items:center;gap:12px}
+.rev-avatar{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.rev-name{font-size:13.5px;font-weight:600;color:var(--charcoal)}
+.rev-meta{font-size:11px;color:var(--muted)}
+.rev-tag{display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;margin-top:3px}
+.rv-pet{background:rgba(201,169,110,.15);color:var(--clay-d)}.rv-home{background:rgba(36,61,51,.1);color:var(--forest)}
+.nl-sec{padding:90px 5vw;text-align:center}
+.nl-inner{max-width:520px;margin:0 auto}
+.nl-form{display:flex;gap:10px;margin-top:28px}
+.nl-inp{flex:1;padding:14px 20px;border:1.5px solid var(--border);border-radius:var(--r);font-size:14.5px;font-family:'Outfit',sans-serif;background:var(--white);color:var(--ink);outline:none;transition:border-color .2s}
+.nl-inp:focus{border-color:var(--clay)}.nl-inp::placeholder{color:var(--muted)}
+footer{background:var(--charcoal);padding:72px 5vw 32px}
+.foot-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.foot-brand{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;color:var(--white);margin-bottom:14px}
+.foot-desc{font-size:13px;line-height:1.75;color:rgba(255,255,255,.45);font-weight:300}
+.foot-trust{display:flex;gap:10px;margin-top:20px}
+.f-badge{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:7px 11px;font-size:11px;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:5px}
+.foot-col h5{font-size:11px;font-weight:600;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px}
+.foot-col ul{list-style:none}
+.foot-col li{font-size:13px;color:rgba(255,255,255,.45);margin-bottom:10px;cursor:pointer;transition:color .2s;font-weight:300}
+.foot-col li:hover{color:var(--white)}
+.foot-bot{border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,.35)}
+.foot-social{display:flex;gap:10px}
+.soc{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:8px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;font-size:15px}
+.soc:hover{background:var(--gold)}
+.pay-icons{display:flex;gap:8px}
+.pay{background:rgba(255,255,255,.08);border-radius:5px;padding:4px 8px;font-size:11px;color:rgba(255,255,255,.45);font-weight:500}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;opacity:0;pointer-events:none;transition:opacity .3s}
+.overlay.open{opacity:1;pointer-events:all}
+.drawer{position:fixed;right:0;top:0;bottom:0;width:400px;background:var(--ivory);z-index:201;transform:translateX(100%);transition:transform .38s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;box-shadow:-20px 0 60px rgba(0,0,0,.15)}
+.drawer.open{transform:translateX(0)}
+.d-head{padding:26px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.d-title{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;color:var(--charcoal)}
+.d-sub{font-size:12px;color:var(--muted);margin-top:2px}
+.d-close{background:none;border:none;width:34px;height:34px;border-radius:8px;cursor:pointer;font-size:18px;color:var(--muted);transition:all .2s;display:flex;align-items:center;justify-content:center}
+.d-close:hover{background:var(--warm);color:var(--ink)}
+.d-items{flex:1;overflow-y:auto;padding:20px 24px}
+.cart-line{display:flex;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid var(--border)}
+.cart-line:last-child{border-bottom:none}
+.cl-img{width:64px;height:64px;border-radius:10px;overflow:hidden;background:var(--warm);flex-shrink:0}
+.cl-img svg{width:100%;height:100%}
+.cl-info{flex:1;min-width:0}
+.cl-name{font-size:14px;font-weight:500;color:var(--charcoal);margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cl-price{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:var(--forest)}
+.cl-qty{display:flex;align-items:center;gap:8px;margin-top:6px}
+.q-btn{background:var(--warm);border:none;border-radius:5px;width:26px;height:26px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:background .2s;color:var(--ink)}
+.q-btn:hover{background:var(--blush)}
+.q-n{font-size:14px;font-weight:500;min-width:20px;text-align:center}
+.cl-rm{background:none;border:none;cursor:pointer;color:var(--muted);font-size:18px;padding:4px;transition:color .2s;flex-shrink:0}
+.cl-rm:hover{color:#D4503A}
+.d-empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px;text-align:center;gap:12px}
+.d-empty-icon{width:80px;height:80px}
+.d-empty h3{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--charcoal)}
+.d-empty p{font-size:14px;color:var(--muted);font-weight:300}
+.d-foot{padding:20px 24px;border-top:1px solid var(--border)}
+.ship-bar{background:var(--warm);border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:12px;color:var(--muted)}
+.ship-track{height:4px;background:var(--blush);border-radius:2px;margin-top:6px;overflow:hidden}
+.ship-fill{height:100%;background:var(--forest);border-radius:2px;transition:width .5s ease}
+.d-total-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.d-total-lbl{font-size:13px;color:var(--muted)}
+.d-total-val{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;color:var(--forest)}
+.checkout-btn{width:100%;background:var(--forest);color:var(--white);border:none;border-radius:var(--r);padding:16px;font-size:16px;font-weight:600;cursor:pointer;font-family:'Outfit',sans-serif;transition:all .2s;letter-spacing:.03em}
+.checkout-btn:hover{background:var(--forest-l)}
+.checkout-note{text-align:center;font-size:11px;color:var(--muted);margin-top:10px;display:flex;align-items:center;justify-content:center;gap:5px}
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--charcoal);color:var(--white);padding:12px 24px;border-radius:30px;font-size:14px;z-index:300;transition:transform .3s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;gap:8px;white-space:nowrap;box-shadow:0 8px 32px rgba(0,0,0,.25)}
+.toast.show{transform:translateX(-50%) translateY(0)}
+@media(max-width:1100px){.hero{grid-template-columns:1fr}.hero-r{height:360px}.feats-grid{grid-template-columns:1fr 1fr}.foot-top{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){.nav-links{display:none}.hero-l{padding:64px 5vw 48px}.cats-grid{grid-template-columns:repeat(3,1fr)}.banner{grid-template-columns:1fr}.ban-r{display:none}.revs-grid{grid-template-columns:1fr}.feats-grid{grid-template-columns:1fr 1fr}.foot-top{grid-template-columns:1fr}.drawer{width:100%}.nl-form{flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="announce">🚚 Free US shipping over $75 <span>·</span> ⭐ 4.9/5 · 4,800+ reviews <span>·</span> 🔄 30-day returns</div>
+<nav>
+  <a href="#" class="logo">🏡 NestPaw</a>
+  <ul class="nav-links">
+    <li><a href="#products">All Products</a></li>
+    <li><a href="#products" onclick="filt('home')">Home</a></li>
+    <li><a href="#products" onclick="filt('pet')">Pets</a></li>
+    <li><a href="#features">About</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="cart-btn" onclick="toggleDrawer()">🛒 Cart <span class="cart-badge" id="cart-count">0</span></button>
+  </div>
+</nav>
+<section class="hero">
+  <div class="hero-l">
+    <div class="eyebrow">✦ New Collection 2026</div>
+    <h1>Your Home.<br><em>Your Pet.</em><br>One Store.</h1>
+    <p class="hero-desc">Premium products curated for the spaces you live in and the animals you love — because both deserve the very best.</p>
+    <div class="hero-ctas">
+      <button class="btn-p" onclick="goTo('products')">Shop Now</button>
+      <button class="btn-g" onclick="filt('pet');goTo('products')">Pets Collection →</button>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-n">4,800+</div><div class="stat-l">Happy Customers</div></div>
+      <div><div class="stat-n">4.9★</div><div class="stat-l">Average Rating</div></div>
+      <div><div class="stat-n">2–5</div><div class="stat-l">Days Shipping</div></div>
+    </div>
+  </div>
+  <div class="hero-r">
+    <div class="m-card"><svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="250" fill="#3A6B57"/><ellipse cx="100" cy="145" rx="55" ry="35" fill="#2E5244"/><circle cx="100" cy="105" r="45" fill="#4A8A6A"/><path d="M75 95 Q100 75 125 95 Q130 110 100 120 Q70 110 75 95Z" fill="#6AB890"/><circle cx="85" cy="98" r="5" fill="#243D33"/><circle cx="115" cy="98" r="5" fill="#243D33"/><ellipse cx="100" cy="108" rx="8" ry="5" fill="#243D33"/><path d="M65 85 Q60 70 70 75" stroke="#6AB890" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M135 85 Q140 70 130 75" stroke="#6AB890" stroke-width="3" fill="none" stroke-linecap="round"/></svg><div class="m-label">Pet Accessories</div></div>
+    <div class="m-card"><svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="250" fill="#C4956A"/><rect x="80" y="60" width="40" height="120" rx="4" fill="#9E7248"/><ellipse cx="100" cy="55" rx="22" ry="18" fill="#DFC08A"/><ellipse cx="100" cy="55" rx="14" ry="11" fill="#FAD090" opacity=".9"/><ellipse cx="100" cy="55" rx="6" ry="4" fill="#FFB020" opacity=".8"/><rect x="72" y="178" width="56" height="12" rx="3" fill="#9E7248"/></svg><div class="m-label">Home Decor</div></div>
+    <div class="m-card"><svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="250" fill="#5C8A78"/><ellipse cx="100" cy="155" rx="60" ry="20" fill="#3A6B57"/><rect x="55" y="100" width="90" height="60" rx="12" fill="#4A7A6A"/><ellipse cx="100" cy="100" rx="45" ry="18" fill="#6AB890"/><ellipse cx="100" cy="100" rx="30" ry="11" fill="#8ADAB0"/><circle cx="100" cy="100" r="8" fill="#3A6B57"/></svg><div class="m-label">Pet Grooming</div></div>
+    <div class="m-card"><svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg"><rect width="200" height="250" fill="#B07848"/><rect x="40" y="80" width="120" height="100" rx="10" fill="#9E6838"/><rect x="50" y="90" width="100" height="80" rx="6" fill="#7A5028"/><rect x="60" y="100" width="30" height="50" rx="4" fill="#C48848"/><rect x="100" y="100" width="40" height="22" rx="4" fill="#C48848"/><rect x="100" y="130" width="40" height="20" rx="4" fill="#C48848"/><rect x="55" y="75" width="90" height="10" rx="3" fill="#DFC08A"/></svg><div class="m-label">Premium Living</div></div>
+  </div>
+</section>
+<div class="ticker"><div class="ticker-track" id="ticker"></div></div>
+<section class="sec" style="padding-bottom:60px">
+  <div class="sec-head">
+    <div class="sec-badge">Browse by Category</div>
+    <h2 class="sec-title">What are you <em>looking for?</em></h2>
+  </div>
+  <div class="cats-grid" id="cats-grid"></div>
+</section>
+<section class="sec" id="products" style="padding-top:40px">
+  <div class="sec-head">
+    <div class="sec-badge">Best Sellers 2026</div>
+    <h2 class="sec-title">Loved by <em>thousands</em></h2>
+    <p class="sec-sub">Based on real Amazon &amp; Chewy bestseller data — products pet owners actually buy again and again</p>
+  </div>
+  <div class="prods-grid" id="prods-grid"></div>
+</section>
+<div class="banner">
+  <div class="ban-deco"></div>
+  <div class="ban-l">
+    <div class="ban-tag">🐾 2026 Pet Tech Trend</div>
+    <h2>Smart Care for<br>Smart Pets</h2>
+    <p>GPS trackers, auto-feeders, and interactive toys — because even when you're away, they deserve the best.</p>
+    <button class="btn-iv" onclick="filt('pet');goTo('products')">Explore Pet Collection →</button>
+  </div>
+  <div class="ban-r">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="100" cy="130" r="60" fill="rgba(255,255,255,.06)"/>
+      <ellipse cx="100" cy="145" rx="45" ry="15" fill="rgba(0,0,0,.2)"/>
+      <ellipse cx="100" cy="110" rx="42" ry="38" fill="#DFC08A"/>
+      <ellipse cx="100" cy="108" rx="34" ry="30" fill="#C9A96E"/>
+      <circle cx="86" cy="100" r="6" fill="#243D33"/><circle cx="114" cy="100" r="6" fill="#243D33"/>
+      <ellipse cx="100" cy="114" rx="10" ry="6" fill="#A07840"/>
+      <path d="M82 122 Q100 136 118 122" stroke="#A07840" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <ellipse cx="68" cy="85" rx="12" ry="16" fill="#C9A96E" transform="rotate(-20,68,85)"/>
+      <ellipse cx="132" cy="85" rx="12" ry="16" fill="#C9A96E" transform="rotate(20,132,85)"/>
+      <path d="M70 130 L60 175 Q100 165 140 175 L130 130" fill="#A07840"/>
+      <ellipse cx="80" cy="175" rx="12" ry="8" fill="#8A6030"/><ellipse cx="120" cy="175" rx="12" ry="8" fill="#8A6030"/>
+    </svg>
+  </div>
+</div>
+<section class="sec" id="features">
+  <div class="sec-head">
+    <div class="sec-badge">Why NestPaw</div>
+    <h2 class="sec-title">The difference you <em>feel</em></h2>
+  </div>
+  <div class="feats-grid">
+    <div class="feat"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="12" fill="#EAD9C8"/><path d="M12 24 L24 14 L36 24" stroke="#243D33" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 22 L16 36 L32 36 L32 22" stroke="#243D33" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 36 L24 28" stroke="#243D33" stroke-width="2.5" stroke-linecap="round"/><circle cx="36" cy="34" r="6" fill="#243D33"/><path d="M33 34 L35 36 L39 32" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="feat-title">Fast US Shipping</div><div class="feat-desc">Ships from US warehouses. Arrives in 2–5 business days. Free on orders $75+.</div></div>
+    <div class="feat"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="12" fill="#EAD9C8"/><path d="M24 12 C24 12 14 16 14 24 C14 30 18.5 35 24 36 C29.5 35 34 30 34 24 C34 16 24 12 24 12Z" stroke="#243D33" stroke-width="2.5" fill="none" stroke-linejoin="round"/><path d="M20 24 L23 27 L28 21" stroke="#243D33" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="feat-title">30-Day Returns</div><div class="feat-desc">Not satisfied? Return any product within 30 days, no questions asked.</div></div>
+    <div class="feat"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="12" fill="#EAD9C8"/><rect x="12" y="20" width="24" height="18" rx="3" stroke="#243D33" stroke-width="2.5"/><path d="M17 20 L17 16 C17 12.7 19.7 10 23 10 L25 10 C28.3 10 31 12.7 31 16 L31 20" stroke="#243D33" stroke-width="2.5" stroke-linecap="round" fill="none"/><circle cx="24" cy="29" r="3" fill="#243D33"/></svg><div class="feat-title">Secure Checkout</div><div class="feat-desc">256-bit SSL encryption. Pay with card, PayPal, Apple Pay, or Google Pay.</div></div>
+    <div class="feat"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="12" fill="#EAD9C8"/><circle cx="24" cy="20" r="7" stroke="#243D33" stroke-width="2.5"/><path d="M14 38 C14 32.5 18.5 28 24 28 C29.5 28 34 32.5 34 38" stroke="#243D33" stroke-width="2.5" stroke-linecap="round"/></svg><div class="feat-title">Real Human Support</div><div class="feat-desc">Email and chat Mon–Fri, 9am–6pm EST. Always a real person, never a bot.</div></div>
+  </div>
+</section>
+<section class="revs-section">
+  <div class="sec-head">
+    <div class="sec-badge">Customer Stories</div>
+    <h2 class="sec-title">They <em>loved</em> it</h2>
+  </div>
+  <div class="revs-grid" id="revs-grid"></div>
+</section>
+<section class="nl-sec">
+  <div class="nl-inner">
+    <div class="sec-badge">Stay in the Loop</div>
+    <h2 class="sec-title" style="font-size:36px">Join the <em>NestPaw</em> family</h2>
+    <p class="sec-sub">Exclusive deals, new arrivals &amp; pet care tips — straight to your inbox</p>
+    <div class="nl-form">
+      <input class="nl-inp" type="email" id="nl-email" placeholder="your@email.com">
+      <button class="btn-p" onclick="subscribe()">Subscribe</button>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="foot-top">
+    <div>
+      <div class="foot-brand">🏡 NestPaw</div>
+      <p class="foot-desc">Premium products for your home and your pets. Because every corner of your life deserves care.</p>
+      <div class="foot-trust"><div class="f-badge">🔒 SSL Secure</div><div class="f-badge">🇺🇸 US Shipping</div><div class="f-badge">⭐ 4.9 Stars</div></div>
+    </div>
+    <div class="foot-col"><h5>Shop</h5><ul><li onclick="filt('all');goTo('products')">All Products</li><li onclick="filt('home');goTo('products')">Home &amp; Decor</li><li onclick="filt('pet');goTo('products')">Pet Care</li><li>Sale Items</li></ul></div>
+    <div class="foot-col"><h5>Support</h5><ul><li>Shipping Info</li><li>Returns</li><li>Contact Us</li><li>FAQ</li><li>Track Order</li></ul></div>
+    <div class="foot-col"><h5>Company</h5><ul><li>About Us</li><li>Blog</li><li>Privacy Policy</li><li>Terms of Service</li></ul></div>
+  </div>
+  <div class="foot-bot">
+    <span>© 2026 NestPaw · All rights reserved</span>
+    <div style="display:flex;align-items:center;gap:20px">
+      <div class="pay-icons"><div class="pay">VISA</div><div class="pay">MC</div><div class="pay">PayPal</div><div class="pay">Apple Pay</div></div>
+      <div class="foot-social"><div class="soc">🎵</div><div class="soc">📸</div><div class="soc">👥</div></div>
+    </div>
+  </div>
+</footer>
+<div class="overlay" id="overlay" onclick="toggleDrawer()"></div>
+<div class="drawer" id="drawer">
+  <div class="d-head">
+    <div><div class="d-title">Your Cart</div><div class="d-sub" id="d-sub">0 items</div></div>
+    <button class="d-close" onclick="toggleDrawer()">✕</button>
+  </div>
+  <div id="d-body" style="flex:1;display:flex;flex-direction:column;overflow:hidden"></div>
+  <div class="d-foot" id="d-foot" style="display:none">
+    <div class="ship-bar"><span id="ship-txt">Add <strong id="ship-rem">$75.00</strong> more for free shipping 🚚</span><div class="ship-track"><div class="ship-fill" id="ship-fill" style="width:0%"></div></div></div>
+    <div class="d-total-row"><span class="d-total-lbl">Subtotal</span><span class="d-total-val" id="d-total">$0.00</span></div>
+    <button class="checkout-btn" onclick="doCheckout()">Proceed to Checkout →</button>
+    <div class="checkout-note">🔒 Secure · Free returns · SSL encrypted</div>
+  </div>
+</div>
+<div class="toast" id="toast">✓ Added!</div>
+<script>
+const SVGS={
+roller:`<svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="280" fill="#F0EAE0"/><rect x="60" y="80" width="160" height="50" rx="25" fill="#C4956A"/><rect x="68" y="88" width="144" height="34" rx="17" fill="#DFC08A"/><rect x="76" y="96" width="128" height="18" rx="9" fill="#F5E8D0"/><path d="M80 100 Q140 92 200 100" stroke="#C4956A" stroke-width="1.5" fill="none" opacity=".5"/><rect x="118" y="130" width="44" height="70" rx="8" fill="#9E7248"/><rect x="126" y="138" width="28" height="54" rx="5" fill="#C4956A"/><ellipse cx="140" cy="200" rx="30" ry="8" fill="rgba(0,0,0,.1)"/><text x="140" y="245" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#9E7248" font-weight="600">Pet Hair Roller Pro</text></svg>`,
+fountain:`<svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="280" fill="#E0EAF0"/><ellipse cx="140" cy="220" rx="70" ry="16" fill="#A8C8D8" opacity=".5"/><rect x="90" y="160" width="100" height="55" rx="16" fill="#5A8FA8"/><rect x="98" y="168" width="84" height="40" rx="10" fill="#7AB0C8"/><rect x="125" y="100" width="30" height="65" rx="8" fill="#4A7A98"/><ellipse cx="140" cy="98" rx="42" ry="18" fill="#5A9AB8"/><ellipse cx="140" cy="92" rx="30" ry="11" fill="#7ABCD8"/><path d="M140 80 Q130 55 125 40" stroke="#7ABCD8" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M140 80 Q155 55 160 40" stroke="#7ABCD8" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M140 80 Q140 50 140 35" stroke="#9ACCE8" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="125" cy="38" r="5" fill="#9ACCE8" opacity=".7"/><circle cx="161" cy="38" r="5" fill="#9ACCE8" opacity=".7"/><circle cx="140" cy="32" r="5" fill="#B8E0F0" opacity=".7"/><text x="140" y="252" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#4A7A98" font-weight="600">Petal Cat Fountain</text></svg>`,
+collar:`<svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="280" fill="#EAE8F5"/><ellipse cx="140" cy="155" rx="88" ry="50" fill="none" stroke="#5A4A98" stroke-width="22" stroke-linecap="round"/><ellipse cx="140" cy="155" rx="88" ry="50" fill="none" stroke="#7868C8" stroke-width="16" stroke-linecap="round"/><path d="M60 140 Q140 90 220 140" stroke="#A898F0" stroke-width="4" fill="none" stroke-dasharray="8,6" opacity=".7"/><rect x="128" y="195" width="24" height="30" rx="4" fill="#4A3A88"/><ellipse cx="140" cy="228" rx="10" ry="6" fill="#6858B8"/><circle cx="60" cy="130" r="6" fill="#FFE040"/><circle cx="100" cy="110" r="5" fill="#40E0FF" opacity=".9"/><circle cx="180" cy="108" r="5" fill="#FF6080" opacity=".9"/><circle cx="220" cy="128" r="6" fill="#60FF80" opacity=".9"/><circle cx="140" cy="100" r="4" fill="#FFB040" opacity=".9"/><text x="140" y="256" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#5A4A98" font-weight="600">SafeGlow LED Collar</text></svg>`,
+bed:`<svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="280" fill="#F0E8E0"/><ellipse cx="140" cy="230" rx="100" ry="18" fill="rgba(0,0,0,.08)"/><rect x="30" y="155" width="220" height="70" rx="20" fill="#8B6040"/><rect x="38" y="148" width="204" height="30" rx="15" fill="#A07050"/><ellipse cx="140" cy="148" rx="102" ry="22" fill="#C49070"/><ellipse cx="140" cy="148" rx="90" ry="15" fill="#D4A880"/><ellipse cx="140" cy="148" rx="70" ry="9" fill="#E8C0A0" opacity=".6"/><circle cx="80" cy="148" r="20" fill="#C49070"/><circle cx="200" cy="148" r="20" fill="#C49070"/><text x="140" y="256" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#8B6040" font-weight="600">OrthoCloud Dog Bed</text></svg>`,
+feeder:`<svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="280" fill="#E8EAF5"/><ellipse cx="140" cy="215" rx="80" ry="18" fill="#5A5A98" opacity=".3"/><rect x="60" y="140" width="160" height="70" rx="20" fill="#5A5A98"/><rect x="70" y="148" width="140" height="55" rx="14" fill="#7878B8"/><rect x="80" y="155" width="35" height="35" rx="8" fill="#A8A8D8"/><rect x="125" y="155" width="35" height="15" rx="5" fill="#A8A8D8"/><rect x="165" y="155" width="35" height="35" rx="8" fill="#A8A8D8"/><rect x="125" y="178" width="35" height="14" rx="5" fill="#A8A8D8"/><circle cx="97" cy="172" r="8" fill="#7878B8"/><circle cx="183" cy="172" r="8" fill="#7878B8"/><ellipse cx="140" cy="140" rx="50" ry="12" fill="#4A4A88"/><path d="M100 110 Q140 90 180 110" stroke="#7878B8" stroke-width="3" fill="none"/><text x="140" y="250" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#5A5A98" font-weight="600">SlowFeed Interactive Bowl</text></svg>`,
+gps:`<svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="280" fill="#E0F0EA"/><rect x="95" y="80" width="90" height="120" rx="18" fill="#243D33"/><rect x="103" y="90" width="74" height="90" rx="10" fill="#2E5244"/><circle cx="140" cy="135" r="28" fill="#3A6B57"/><circle cx="140" cy="135" r="20" fill="#4A8A6A"/><path d="M140 118 L140 152 M123 135 L157 135" stroke="#8ADAB0" stroke-width="2.5" stroke-linecap="round"/><circle cx="140" cy="135" r="5" fill="#C9A96E"/><circle cx="115" cy="168" r="4" fill="#C9A96E"/><circle cx="140" cy="172" r="4" fill="#DFC08A"/><circle cx="165" cy="168" r="4" fill="#C9A96E"/><rect x="130" y="196" width="20" height="8" rx="3" fill="#C9A96E"/><text x="140" y="250" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#243D33" font-weight="600">PawTrack GPS Tag</text></svg>`,
+diffuser:`<svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="280" fill="#E8F0E8"/><ellipse cx="140" cy="225" rx="55" ry="12" fill="rgba(0,0,0,.08)"/><path d="M100 220 Q90 180 95 140 Q100 100 140 85 Q180 100 185 140 Q190 180 180 220 Z" fill="#4A7A5A"/><path d="M108 218 Q100 178 105 140 Q110 105 140 92 Q170 105 175 140 Q180 178 172 218 Z" fill="#5A9A6A"/><ellipse cx="140" cy="88" rx="30" ry="12" fill="#4A8A5A"/><ellipse cx="140" cy="84" rx="20" ry="7" fill="#6AB880"/><path d="M130 55 Q126 35 132 22" stroke="#6AB880" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M140 48 Q140 28 140 15" stroke="#8AD8A0" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M150 55 Q154 35 148 22" stroke="#6AB880" stroke-width="2.5" fill="none" stroke-linecap="round"/><text x="140" y="250" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#4A7A5A" font-weight="600">Ultrasonic Diffuser</text></svg>`,
+lamp:`<svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="280" fill="#E8F0E8"/><rect x="127" y="150" width="26" height="70" rx="5" fill="#9E7248"/><rect x="110" y="215" width="60" height="12" rx="4" fill="#8B6040"/><ellipse cx="140" cy="227" rx="30" ry="6" fill="rgba(0,0,0,.1)"/><path d="M90 148 Q140 100 190 148" fill="#C4956A" stroke="#B08040" stroke-width="1.5"/><ellipse cx="140" cy="148" rx="50" ry="12" fill="#A07040"/><circle cx="140" cy="118" r="28" fill="#FFE080" opacity=".9"/><circle cx="140" cy="118" r="20" fill="#FFD040" opacity=".95"/><circle cx="140" cy="118" r="12" fill="#FFC000"/><path d="M140 82 L140 72" stroke="#FFD040" stroke-width="3" stroke-linecap="round"/><path d="M113 92 L106 85" stroke="#FFD040" stroke-width="2.5" stroke-linecap="round"/><path d="M167 92 L174 85" stroke="#FFD040" stroke-width="2.5" stroke-linecap="round"/><text x="140" y="252" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#9E7248" font-weight="600">Nordic LED Mood Light</text></svg>`,
+organizer:`<svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="280" fill="#F5EDE0"/><rect x="50" y="90" width="180" height="140" rx="8" fill="#9A7248"/><rect x="58" y="98" width="78" height="80" rx="5" fill="#C4956A"/><rect x="144" y="98" width="78" height="35" rx="5" fill="#C4956A"/><rect x="144" y="141" width="78" height="37" rx="5" fill="#C4956A"/><rect x="58" y="186" width="164" height="35" rx="5" fill="#B08050"/><rect x="70" y="75" width="140" height="18" rx="4" fill="#DFC08A"/><text x="140" y="252" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#9A7248" font-weight="600">Bamboo Desk Organizer</text></svg>`,
+solar:`<svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="280" fill="#F0F0E0"/><rect x="130" y="160" width="20" height="80" rx="4" fill="#7A7A5A"/><ellipse cx="140" cy="242" rx="25" ry="8" fill="rgba(0,0,0,.1)"/><polygon points="140,60 155,110 205,110 165,138 180,188 140,160 100,188 115,138 75,110 125,110" fill="#FFD040" opacity=".9"/><circle cx="140" cy="120" r="22" fill="#FFB020"/><circle cx="140" cy="120" r="14" fill="#FFC840"/><text x="140" y="252" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#5A7A3A" font-weight="600">Solar Garden Lights</text></svg>`,
+trash:`<svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="280" fill="#F0EAE8"/><ellipse cx="140" cy="235" rx="65" ry="12" fill="rgba(0,0,0,.08)"/><rect x="75" y="110" width="130" height="120" rx="14" fill="#707070"/><rect x="83" y="118" width="114" height="105" rx="9" fill="#888888"/><rect x="60" y="100" width="160" height="18" rx="6" fill="#606060"/><rect x="108" y="80" width="64" height="22" rx="6" fill="#707070"/><rect x="116" y="88" width="48" height="14" rx="4" fill="#555555"/><text x="140" y="255" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#606060" font-weight="600">Motion Sensor Trash Can</text></svg>`,
+probe:`<svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="280" fill="#EAF0E8"/><rect x="115" y="60" width="50" height="130" rx="12" fill="#3A6A4A"/><rect x="122" y="68" width="36" height="90" rx="7" fill="#4A8A5A"/><rect x="126" y="72" width="28" height="70" rx="5" fill="#2A5A3A"/><text x="140" y="115" text-anchor="middle" font-family="monospace" font-size="18" fill="#80FF80" font-weight="700">72°</text><path d="M140 190 L140 235" stroke="#8B6040" stroke-width="6" stroke-linecap="round"/><circle cx="140" cy="240" r="12" fill="#C4956A"/><text x="140" y="260" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#3A6A4A" font-weight="600">InstantRead Probe</text></svg>`
+};
+const CATS=[
+  {id:'all',icon:'⭐',name:'All Products',count:12},
+  {id:'pet',icon:'🐾',name:'Pet Care',count:6},
+  {id:'home',icon:'🏠',name:'Home & Decor',count:4},
+  {id:'kitchen',icon:'🍳',name:'Kitchen',count:1},
+  {id:'outdoor',icon:'🌿',name:'Outdoor',count:1}
+];
+const PRODS=[
+  {id:1,cat:'pet',sk:'roller',badge:'hot',name:'Pet Hair Roller Pro',desc:'Removes pet hair from any surface instantly. Reusable, self-cleaning, eco-friendly. Works on couches, beds, and clothes.',price:29,orig:48,stars:5,reviews:6240,bg:'#F0EAE0'},
+  {id:2,cat:'home',sk:'lamp',badge:'new',name:'Nordic LED Mood Light',desc:'16 warm tones, whisper-quiet, USB-C rechargeable. Creates instant ambiance in any room. Over 3,000 five-star reviews.',price:49,orig:null,stars:5,reviews:3187,bg:'#E8F0E8'},
+  {id:3,cat:'pet',sk:'fountain',badge:'best',name:'Petal Cat Water Fountain',desc:'Triple-filtration stainless steel. Keeps cats hydrated with fresh flowing water. Amazon\'s Choice — 7,400+ reviews.',price:54,orig:79,stars:5,reviews:7428,bg:'#E0EAF0'},
+  {id:4,cat:'home',sk:'organizer',badge:null,name:'Bamboo Desk Organizer',desc:'Modular, sustainable bamboo construction. Brings calm and order to any workspace. Loved by remote workers.',price:39,orig:null,stars:4,reviews:1095,bg:'#F5EDE0'},
+  {id:5,cat:'pet',sk:'collar',badge:'hot',name:'SafeGlow LED Dog Collar',desc:'USB rechargeable, IP67 waterproof, 3 flash modes. Visible 500m away. Walk safely every night of the year.',price:24,orig:38,stars:5,reviews:5256,bg:'#EAE8F5'},
+  {id:6,cat:'home',sk:'diffuser',badge:'sale',name:'Ultrasonic Aroma Diffuser',desc:'400ml cool mist, 10-hour runtime, 7-color light. Fill every room with calm and natural fragrance.',price:44,orig:65,stars:5,reviews:4203,bg:'#E8F0E8'},
+  {id:7,cat:'pet',sk:'bed',badge:'best',name:'OrthoCloud Dog Bed (L)',desc:'Memory foam base with washable sherpa cover. Clinically-inspired joint relief for dogs of all sizes. #1 bestseller.',price:89,orig:129,stars:5,reviews:8374,bg:'#F0E8E0'},
+  {id:8,cat:'kitchen',sk:'probe',badge:null,name:'InstantRead Kitchen Probe',desc:'±0.1°F accuracy, 2-second read, waterproof, backlit LCD. The last thermometer you\'ll ever need to buy.',price:28,orig:null,stars:4,reviews:2142,bg:'#EAF0E8'},
+  {id:9,cat:'pet',sk:'feeder',badge:'new',name:'SlowFeed Interactive Bowl',desc:'Puzzle feeder for cats & dogs. Slows eating by 10x, reduces bloat, stimulates natural foraging instinct.',price:34,orig:49,stars:5,reviews:3189,bg:'#E8EAF5'},
+  {id:10,cat:'home',sk:'trash',badge:null,name:'Motion Sensor Trash Can',desc:'Brushed stainless steel, 13L, hands-free auto-open lid. Hygienic, sleek, and deeply satisfying every day.',price:69,orig:95,stars:4,reviews:1808,bg:'#F0EAE8'},
+  {id:11,cat:'outdoor',sk:'solar',badge:'hot',name:'Solar Garden Path Lights (4-Pack)',desc:'Auto on at dusk, off at dawn. IP65 weatherproof, 8-hour runtime. Transform your garden overnight.',price:38,orig:55,stars:5,reviews:4221,bg:'#F0F0E0'},
+  {id:12,cat:'pet',sk:'gps',badge:'new',name:'PawTrack GPS Collar Tag',desc:'Real-time location tracking via app, SOS panic button, 7-day battery. Peace of mind, every single day.',price:79,orig:109,stars:5,reviews:2167,bg:'#E0F0EA'}
+];
+const REVS=[
+  {stars:5,text:"The pet hair roller is genuinely life-changing. My golden retriever sheds constantly, and my couch was always covered. One pass with this and it looks brand new. I've bought three more as gifts for friends.",name:"Sarah M.",loc:"Austin, TX",product:"Pet Hair Roller Pro",icon:"🐕",bg:"#EAD9C8",tag:"rv-pet",tl:"Dog Owner",date:"March 14, 2026"},
+  {stars:5,text:"Ordered the cat fountain and it arrived in 3 days, packaged beautifully. My rescue cat refused to drink from a bowl — she was always begging for the tap. Within an hour she was drinking freely. Her coat is already shinier.",name:"James K.",loc:"Portland, OR",product:"Petal Cat Fountain",icon:"🐱",bg:"#EAD9C8",tag:"rv-pet",tl:"Cat Parent",date:"February 28, 2026"},
+  {stars:5,text:"Got the LED lamp and bamboo organizer together. Both look incredible — way more premium than the price suggests. My home office finally feels like a place I want to work in. Delivery was faster than expected.",name:"Emily R.",loc:"Brooklyn, NY",product:"Nordic LED Mood Light",icon:"🏡",bg:"#DDE8DD",tag:"rv-home",tl:"Home Stylist",date:"April 2, 2026"},
+  {stars:5,text:"Got the LED collar for my lab mix who pulls on night walks. He lit up like a little star and I could spot him across the whole field. The USB charge lasts about 5 nights. Genuinely worth every penny for the safety alone.",name:"Marcus T.",loc:"Denver, CO",product:"SafeGlow LED Collar",icon:"🐕",bg:"#EAD9C8",tag:"rv-pet",tl:"Dog Owner",date:"March 21, 2026"},
+  {stars:5,text:"My senior dog has hip dysplasia and I'd tried three other beds. The OrthoCloud is the first one where I see a real difference — she gets up in the morning without the usual stiffness. My vet was impressed too.",name:"Linda C.",loc:"Nashville, TN",product:"OrthoCloud Dog Bed",icon:"🐕",bg:"#EAD9C8",tag:"rv-pet",tl:"Senior Dog Mom",date:"January 30, 2026"},
+  {stars:5,text:"The aroma diffuser is beautiful and so quiet. I pair it with eucalyptus oil at night and sleep so much better. The color-changing light is a bonus I didn't expect to love as much as I do. Second one ordered for the bedroom.",name:"Priya N.",loc:"San Jose, CA",product:"Ultrasonic Diffuser",icon:"🏡",bg:"#DDE8DD",tag:"rv-home",tl:"Wellness Enthusiast",date:"March 7, 2026"}
+];
+let cart=[],activeF='all';
+// TICKER
+(function(){
+  const items=['🚚 Free shipping over $75','⭐ 4.9/5 from 4,800+ reviews','🔄 30-day hassle-free returns','🐾 Trusted by thousands of pet parents','🛡️ Secure checkout','🇺🇸 Ships from US warehouses','💬 Real human support','✦ New arrivals every week'];
+  const d=[...items,...items];
+  document.getElementById('ticker').innerHTML=d.map(t=>`<span class="t-item"><span class="t-dot"></span>${t}</span>`).join('');
+})();
+// CATS
+function buildCats(){
+  document.getElementById('cats-grid').innerHTML=CATS.map(c=>`
+    <div class="cat-c ${c.id===activeF?'on':''}" onclick="filt('${c.id}');goTo('products')">
+      <span class="cat-icon-wrap">${c.icon}</span>
+      <div class="cat-name">${c.name}</div>
+      <div class="cat-cnt">${c.count} items</div>
+    </div>`).join('');
+}
+// PRODS
+function renderProds(){
+  const list=activeF==='all'?PRODS:PRODS.filter(p=>p.cat===activeF);
+  const bl={new:'NEW',hot:'HOT',sale:'SALE',best:'BEST SELLER'};
+  const cl={pet:'Pet Care',home:'Home & Decor',kitchen:'Kitchen',outdoor:'Outdoor'};
+  document.getElementById('prods-grid').innerHTML=list.map(p=>{
+    const inCart=cart.find(c=>c.id===p.id);
+    const save=p.orig?Math.round((1-p.price/p.orig)*100):null;
+    const stars='★'.repeat(p.stars)+(p.stars<5?'☆':'');
+    return `<div class="prod">
+      <div class="prod-img" style="background:${p.bg}">${SVGS[p.sk]}${p.badge?`<div class="prod-bge b-${p.badge}">${bl[p.badge]}</div>`:''}</div>
+      <div class="prod-body">
+        <div class="prod-cat">${cl[p.cat]}</div>
+        <div class="prod-stars">${stars}</div>
+        <div class="prod-revs">${p.reviews.toLocaleString()} reviews</div>
+        <div class="prod-name">${p.name}</div>
+        <div class="prod-desc">${p.desc}</div>
+        <div class="prod-foot">
+          <div>${p.orig?`<span class="prod-orig">$${p.orig}</span><span class="prod-save">−${save}%</span><br>`:''}<span class="prod-price">$${p.price}</span></div>
+          <button class="add-btn ${inCart?'in':''}" onclick="addToCart(${p.id})">${inCart?'✓':'+'}</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+function filt(cat){activeF=cat;buildCats();renderProds();}
+// REVIEWS
+document.getElementById('revs-grid').innerHTML=REVS.map(r=>`
+  <div class="rev">
+    <div class="rev-stars">${'★'.repeat(r.stars)}</div>
+    <p class="rev-text">${r.text}</p>
+    <div class="rev-author">
+      <div class="rev-avatar" style="background:${r.bg}">${r.icon}</div>
+      <div>
+        <div class="rev-name">${r.name}</div>
+        <div class="rev-meta">${r.loc} · ${r.date}</div>
+        <span class="rev-tag ${r.tag}">${r.tl} · ✓ Verified</span>
+      </div>
+    </div>
+  </div>`).join('');
+// CART
+function addToCart(id){
+  const p=PRODS.find(x=>x.id===id);
+  const ex=cart.find(c=>c.id===id);
+  if(ex)ex.qty++;else cart.push({...p,qty:1});
+  updateCart();renderProds();
+  showToast(p.name+' added to cart!');
+}
+function changeQty(id,d){
+  const item=cart.find(c=>c.id===id);
+  if(!item)return;
+  item.qty+=d;
+  if(item.qty<=0)cart=cart.filter(c=>c.id!==id);
+  updateCart();renderProds();
+}
+function removeLine(id){cart=cart.filter(c=>c.id!==id);updateCart();renderProds();}
+function updateCart(){
+  const total=cart.reduce((s,c)=>s+c.qty,0);
+  const sub=cart.reduce((s,c)=>s+c.price*c.qty,0);
+  const FREE=75;
+  const badge=document.getElementById('cart-count');
+  badge.textContent=total;badge.classList.add('bump');
+  setTimeout(()=>badge.classList.remove('bump'),300);
+  document.getElementById('d-sub').textContent=total===0?'0 items':`${total} item${total>1?'s':''} · $${sub.toFixed(2)}`;
+  const body=document.getElementById('d-body');
+  const foot=document.getElementById('d-foot');
+  if(cart.length===0){
+    body.innerHTML=`<div class="d-empty"><svg class="d-empty-icon" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="40" r="38" stroke="#EAD9C8" stroke-width="2"/><path d="M20 30 L25 55 L55 55 L60 30 Z" stroke="#C4956A" stroke-width="2" stroke-linejoin="round" fill="#F5EDE0"/><path d="M32 30 L32 26 C32 20 48 20 48 26 L48 30" stroke="#C4956A" stroke-width="2" stroke-linecap="round" fill="none"/><circle cx="33" cy="62" r="4" fill="#C4956A"/><circle cx="49" cy="62" r="4" fill="#C4956A"/></svg><h3>Your cart is empty</h3><p>Add something wonderful!</p></div>`;
+    foot.style.display='none';
+  } else {
+    body.innerHTML=`<div class="d-items">${cart.map(c=>`<div class="cart-line"><div class="cl-img">${SVGS[c.sk]}</div><div class="cl-info"><div class="cl-name">${c.name}</div><div class="cl-price">$${(c.price*c.qty).toFixed(2)}</div><div class="cl-qty"><button class="q-btn" onclick="changeQty(${c.id},-1)">−</button><span class="q-n">${c.qty}</span><button class="q-btn" onclick="changeQty(${c.id},1)">+</button></div></div><button class="cl-rm" onclick="removeLine(${c.id})">🗑</button></div>`).join('')}</div>`;
+    foot.style.display='block';
+    const rem=Math.max(0,FREE-sub);
+    const pct=Math.min(100,(sub/FREE)*100);
+    document.getElementById('ship-fill').style.width=pct+'%';
+    document.getElementById('ship-rem').textContent='$'+rem.toFixed(2);
+    document.getElementById('ship-txt').innerHTML=rem>0?`Add <strong>$${rem.toFixed(2)}</strong> more for free shipping 🚚`:`🎉 You've unlocked <strong>free shipping!</strong>`;
+    document.getElementById('d-total').textContent='$'+sub.toFixed(2);
+  }
+}
+function toggleDrawer(){document.getElementById('drawer').classList.toggle('open');document.getElementById('overlay').classList.toggle('open');}
+function doCheckout(){const s=cart.reduce((a,c)=>a+c.price*c.qty,0);showToast('Redirecting to checkout · $'+s.toFixed(2)+' 🛒');setTimeout(()=>toggleDrawer(),1200);}
+function showToast(msg){const t=document.getElementById('toast');t.textContent='✓ '+msg;t.classList.add('show');clearTimeout(window._tt);window._tt=setTimeout(()=>t.classList.remove('show'),2600);}
+function subscribe(){const v=document.getElementById('nl-email').value;if(v&&v.includes('@')){showToast("You're subscribed! Welcome 🎉");document.getElementById('nl-email').value='';}else showToast('Please enter a valid email.');}
+function goTo(id){document.getElementById(id)?.scrollIntoView({behavior:'smooth',block:'start'});}
+buildCats();renderProds();updateCart();
+</script>
+</body>
+</html>
